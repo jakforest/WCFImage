@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageWcfService", "ImageWcfService\ImageWcfService.csproj", "{47BE122F-5809-4D2C-923C-52BFCE474D8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageClientWPF", "ImageClientWPF\ImageClientWPF.csproj", "{36529A07-6DFB-489E-808F-808246C25412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageInterfaces", "ImageInterfaces\ImageInterfaces.csproj", "{72EC77BB-5003-410D-8898-B3F076206A20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47BE122F-5809-4D2C-923C-52BFCE474D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47BE122F-5809-4D2C-923C-52BFCE474D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47BE122F-5809-4D2C-923C-52BFCE474D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47BE122F-5809-4D2C-923C-52BFCE474D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36529A07-6DFB-489E-808F-808246C25412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36529A07-6DFB-489E-808F-808246C25412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36529A07-6DFB-489E-808F-808246C25412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36529A07-6DFB-489E-808F-808246C25412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72EC77BB-5003-410D-8898-B3F076206A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72EC77BB-5003-410D-8898-B3F076206A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72EC77BB-5003-410D-8898-B3F076206A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72EC77BB-5003-410D-8898-B3F076206A20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
