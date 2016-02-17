@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace ImageInterfaces.Models
+namespace ImageDataLibrary.Models
 {
     /// <summary>
-    ///this is base class fro image data. Made as abstract only for preventing instantiate as object 
+    /// Common class for FUllImage and ImageItem. Made abstract to prevent creatrion of this class in mistake
     /// </summary>
+    [Serializable]
     public abstract class ImageCommon
     {
         private string _imageName = "image";
-        private Guid _id = Guid.NewGuid();
-        protected byte[] _imageData;
-
         [DataMember]
         public string ImageName
         {
@@ -19,11 +17,15 @@ namespace ImageInterfaces.Models
             set { _imageName = value; }
         }
 
+        private Guid _id = Guid.NewGuid();
         [DataMember]
         public Guid Id
         {
             get { return _id; }
             set { _id = value; }
         }
+
+        protected byte[] _imageData;
+
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{72EC77BB-5003-410D-8898-B3F076206A20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageInterfaces</RootNamespace>
-    <AssemblyName>ImageInterfaces</AssemblyName>
+    <RootNamespace>ImageDataLibrary</RootNamespace>
+    <AssemblyName>ImageDataLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -42,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
     <Compile Include="Models\FullImage.cs" />
+    <Compile Include="Models\FullImageWithThumbnail.cs" />
     <Compile Include="Models\ImageCommon.cs" />
     <Compile Include="Models\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

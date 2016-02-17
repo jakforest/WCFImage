@@ -1,8 +1,8 @@
-﻿using ImageInterfaces.Models;
+﻿using ImageDataLibrary.Models;
 using System;
 using System.ServiceModel;
 
-namespace ImageInterfaces.Interfaces
+namespace ImageDataLibrary.Interfaces
 {
     [ServiceContract]
     public interface IImageService
@@ -13,6 +13,15 @@ namespace ImageInterfaces.Interfaces
 
         [OperationContract]
         FullImage GetImageById(Guid imageId);
+
+        [OperationContract]
+        FullImage PostImage(FullImage image);
+
+        [OperationContract]
+        FullImage PutImage(FullImage image);
+
+        [OperationContract]
+        bool DeleteImage(Guid id);
 
     }
 }

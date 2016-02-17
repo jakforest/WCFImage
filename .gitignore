@@ -3,3 +3,6 @@ ImageClientWPF/obj/
 ImageInterfaces/obj/
 ImageWcfService/obj/
 ImageWcfService/bin/
+ImageClient/bin/
+ImageClient/obj/
+packages/

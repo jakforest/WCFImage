@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-namespace ImageInterfaces.Models
+namespace ImageDataLibrary.Models
 {
     /// <summary>
-    /// Full image. Contains full image
+    /// Full image. Contains full image and thumbnail
     /// </summary>
     [DataContract]
     public class FullImage : ImageCommon
