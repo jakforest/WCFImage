@@ -42,6 +42,7 @@ namespace ImageWcfService.DataService
                     UpdateImageWithNewData(newImage, image);
                     context.Images.Add(newImage);
                     bool result = context.SaveChanges() > 0;
+                    image.Id = newImage.Id;
                     return result;
                 }
             }

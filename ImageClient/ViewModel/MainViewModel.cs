@@ -1,5 +1,4 @@
 ﻿using System;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using ImageClient.Interfaces;
 using ImageDataLibrary.Models;
@@ -12,6 +11,12 @@ namespace ImageClient.ViewModel
         public MainViewModel(IDataService dataService, INavigationService navigationService)
             : base(dataService, navigationService)
         {
+            RefreshList();
+        }
+
+        #region private methods
+        private void RefreshList()
+        {
             _dataService.GetImageList((list, error) =>
             {
                 if (error != null)
@@ -22,6 +27,15 @@ namespace ImageClient.ViewModel
                 ImageList = new ObservableCollection<ImageItem>(list);
             });
         }
+        #endregion
+
+        #region Overrides
+        public override void OnNavigating(object parameter)
+        {
+            base.OnNavigating(parameter);
+            RefreshList();
+        }
+        #endregion
 
         #region Bindable properties
         private ObservableCollection<ImageItem> _imageList;
@@ -47,9 +61,20 @@ namespace ImageClient.ViewModel
 
         private void OpenImageExecute(Guid imageId)
         {
-            _navigationService.NavigateTo(PageEnum.ViewImagePage, imageId);
+            if (imageId != Guid.Empty)
+                _navigationService.NavigateTo(PageEnum.ViewImagePage, imageId);
         }
-    }
-    #endregion
-}
 
+        private RelayCommand _newImage;
+        public RelayCommand NewImage
+        {
+            get { return _newImage ?? (_newImage = new RelayCommand(NewImageExecute)); }
+        }
+
+        private void NewImageExecute()
+        {
+            _navigationService.NavigateTo(PageEnum.ViewImagePage, Guid.Empty);
+        }
+        #endregion
+    }
+}

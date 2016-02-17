@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using ImageClient.ViewModel;
 using ImageClient.Pages;
+using System.Windows.Controls;
 
 namespace ImageClient
 {
@@ -17,6 +18,12 @@ namespace ImageClient
             InitializeComponent();
             Closing += (s, e) => ViewModelLocator.Cleanup();
             RootFrame.Content = new MainPage();
+        }
+
+        private void RootFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            if ((RootFrame.Content != null) && (((Page)RootFrame.Content).DataContext is MainViewModel))
+                ((MainViewModel)DataContext).OnNavigating(null);
         }
     }
 }

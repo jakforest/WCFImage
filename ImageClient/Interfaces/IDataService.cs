@@ -10,5 +10,7 @@ namespace ImageClient.Interfaces
     {
         void GetImage(Guid imageId, Action<FullImage, Exception> callback);
         void GetImageList(Action<ImageItem[], Exception> callback);
+        bool CreateImage(FullImage image);
+        bool UpdateImage(FullImage image);
     }
 }

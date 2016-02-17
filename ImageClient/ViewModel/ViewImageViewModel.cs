@@ -2,6 +2,7 @@
 using ImageClient.Interfaces;
 using ImageDataLibrary.Models;
 using System;
+using System.ComponentModel;
 
 namespace ImageClient.ViewModel
 {
@@ -24,12 +25,16 @@ namespace ImageClient.ViewModel
                       {
                           _image = image;
                           if (_image != null)
+                          {
                               ImageData = _image.FullImageData;
+                              ImageName = _image._imageName;
+                              CanSave = false;
+                          }
                       }));
                 }
                 else
                 {
-
+                    _image = new FullImage { _id = guid };
                 }
             }
             else
@@ -49,7 +54,27 @@ namespace ImageClient.ViewModel
                     return;
                 _imageData = value;
                 RaisePropertyChanged(() => ImageData);
+                SetCanSave();
             }
+        }
+
+        private string _imageName;
+        public string ImageName
+        {
+            get { return _imageName; }
+            set
+            {
+                if (_imageName == value)
+                    return;
+                _imageName = value;
+                RaisePropertyChanged(() => ImageName);
+                SetCanSave();
+            }
+        }
+
+        private void SetCanSave()
+        {
+            CanSave = !string.IsNullOrWhiteSpace(ImageName) && (ImageData != null);
         }
         #endregion
 
@@ -65,6 +90,50 @@ namespace ImageClient.ViewModel
             _image = null;
             ImageData = null;
             _navigationService.GoBack();
+        }
+
+        private bool _canSave = false;
+        private bool CanSave
+        {
+            get { return _canSave; }
+            set
+            {
+                if (_canSave == value)
+                    return;
+                _canSave = value;
+                SaveImage.RaiseCanExecuteChanged();
+            }
+        }
+
+        private RelayCommand _saveImage;
+        public RelayCommand SaveImage
+        {
+            get
+            {
+                return _saveImage ??
+                  (_saveImage = new RelayCommand(SaveImageExecute, new Func<bool>(() => { return CanSave; })));
+            }
+        }
+
+        private void SaveImageExecute()
+        {
+            CanSave = false;
+            if (_image != null)
+            {
+                _image.FullImageData = ImageData;
+                _image._imageName = ImageName;
+                if (_image._id == Guid.Empty)
+                {
+                    _image._imageName = "NewImage";
+                    if (_dataService.CreateImage(_image))
+                        _navigationService.GoBack();
+                }
+                else
+                {
+                    if (_dataService.UpdateImage(_image))
+                        _navigationService.GoBack();
+                }
+            }
         }
         #endregion
     }

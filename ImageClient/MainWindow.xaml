@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Height="300"
-        Width="300"
+        MinHeight="300"
+        MinWidth="400"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
@@ -19,7 +19,7 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <Frame Name="RootFrame" NavigationUIVisibility="Hidden"/>
+        <Frame Name="RootFrame" NavigationUIVisibility="Hidden" Navigated="RootFrame_Navigated"/>
 
         <!--<TextBlock FontSize="36"
                    FontWeight="Bold"

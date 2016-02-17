@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ImageClient.ViewModel;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +26,24 @@ namespace ImageClient.Pages
         public ViewImagePage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.FileOk += Dlg_FileOk;
+            dlg.Filter = "*.jpg|*.jpg";
+            dlg.ShowDialog();
+        }
+
+        private void Dlg_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            OpenFileDialog dlg = sender as OpenFileDialog;
+            if (dlg != null)
+            {
+                if (!string.IsNullOrWhiteSpace(dlg.FileName) && File.Exists(dlg.FileName))
+                    ((ViewImageViewModel)DataContext).ImageData = File.ReadAllBytes(dlg.FileName);
+            }
         }
     }
 }
